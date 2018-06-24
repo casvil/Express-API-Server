@@ -6,11 +6,13 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 // DB Setup
 mongoose.connect('mongodb://localhost:27017/auth');
 
 // App Setup
+// app.use(cors);
 app.use(morgan('combined')); // login framework middleware
 app.use(bodyParser.json({ type: '*/*' })); // parse requests into json middleware
 router(app);
