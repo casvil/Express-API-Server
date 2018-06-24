@@ -3,6 +3,14 @@ const User = require('../models/user');
 exports.signup = function(req, res, next) {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    return res
+      .status(422)
+      .send({
+        message: 'Error - Empty request. Email or password must be provided'
+      });
+  }
+
   // See if a user with a given email exists
   User.findOne({ email }, function(err, existingUser) {
     if (err) return next(err);
@@ -23,7 +31,7 @@ exports.signup = function(req, res, next) {
       if (err) return next(err);
 
       // Respond to request indicating the user was created
-      res.json({ message: 'Success - User created' });
+      res.status(201).send({ message: 'Success - User created' });
     });
   });
 };
