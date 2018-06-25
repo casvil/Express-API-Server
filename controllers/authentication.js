@@ -14,7 +14,8 @@ exports.signup = function(req, res, next) {
 
   if (!email || !password) {
     return res.status(422).send({
-      message: 'Error - Empty request. Email or password must be provided'
+      err: 'Error - Empty request. Email or password must be provided',
+      isOK: false
     });
   }
 
@@ -25,7 +26,9 @@ exports.signup = function(req, res, next) {
     // If a user with email does exist, return an error
     if (existingUser) {
       // 4XX - 422 - Unprocessable Entity
-      res.status(422).send({ message: 'Error - Email is in use' });
+      return res
+        .status(422)
+        .send({ err: 'Error - Email is in use', isOK: false });
     }
 
     // If a user with email does not exists, create and save user record
@@ -38,7 +41,9 @@ exports.signup = function(req, res, next) {
       if (err) return next(err);
 
       // Respond to request indicating the user was created and send back a token
-      res.status(201).json({ authToken: authTokenForUser(user) });
+      return res
+        .status(201)
+        .json({ authToken: authTokenForUser(user), isOK: true });
     });
   });
 };

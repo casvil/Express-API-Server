@@ -12,7 +12,6 @@ const a = 2;
 
 // DB Setup
 mongoose.connect('mongodb://localhost:27017/auth');
-// mongoose.connect('mongodb://ds263740.mlab.com:63740/heroku_js3bm10q');
 
 // App Setup
 app.use(cors());
