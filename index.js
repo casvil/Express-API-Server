@@ -1,15 +1,18 @@
 //Main starting point of the application
-const express = require('express');
-const http = require('http');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
+import express from 'express';
+import http from 'http';
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
+import router from './router';
+import mongoose from 'mongoose';
+import cors from 'cors';
+
 const app = express();
-const router = require('./router');
-const mongoose = require('mongoose');
-const cors = require('cors');
+const a = 2;
 
 // DB Setup
 mongoose.connect('mongodb://localhost:27017/auth');
+// mongoose.connect('mongodb://ds263740.mlab.com:63740/heroku_js3bm10q');
 
 // App Setup
 app.use(cors());

@@ -2,7 +2,7 @@ const jwt = require('jwt-simple');
 const User = require('../models/user');
 const config = require('../config');
 
-function tokenForUser(user) {
+function authTokenForUser(user) {
   const timestamp = new Date().getTime();
   // sub shorthand for subject
   // iat issued at time
@@ -38,7 +38,7 @@ exports.signup = function(req, res, next) {
       if (err) return next(err);
 
       // Respond to request indicating the user was created and send back a token
-      res.status(201).json({ token: tokenForUser(user) });
+      res.status(201).json({ authToken: authTokenForUser(user) });
     });
   });
 };
