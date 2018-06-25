@@ -12,7 +12,7 @@ const cors = require('cors');
 mongoose.connect('mongodb://localhost:27017/auth');
 
 // App Setup
-// app.use(cors);
+app.use(cors());
 app.use(morgan('combined')); // login framework middleware
 app.use(bodyParser.json({ type: '*/*' })); // parse requests into json middleware
 router(app);
