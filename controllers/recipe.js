@@ -16,15 +16,17 @@ exports.addEntry = function(req, res, next) {
     steps: req.body.steps,
     img: req.body.img,
     video: req.body.video,
-    difficulty: req.body.difficultyy
+    difficulty: req.body.difficulty
   });
   recipe.save(function(err) {
     if (err) return next(err);
-
     return res.status(201);
   });
 };
 
 exports.getAllEntries = function(req, res, next) {
-  res.send(req.body);
+  Recipe.find({}, function(err, allEntries) {
+    if (err) return next(err);
+    res.send({ items: allEntries, isOK: true });
+  });
 };

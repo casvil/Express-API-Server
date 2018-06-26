@@ -9,5 +9,5 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 module.exports = function(app) {
   app.post('/signup', Authentication.signup);
   app.post('/recipe', requireAuth, Recipe.addEntry);
-  app.get('/recipe', requireAuth, Recipe.getAllEntries);
+  app.get('/recipe', Recipe.getAllEntries);
 };
