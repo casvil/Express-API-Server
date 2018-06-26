@@ -51,5 +51,5 @@ exports.signup = function(req, res, next) {
 exports.signin = function(req, res, next) {
   // User has already had their email and password auth'd -> authToken
   // We can access to req.user thx to passport
-  res.send({ token: authTokenForUser(req.user) });
+  res.send({ authToken: authTokenForUser(req.user), isOK: true });
 };
