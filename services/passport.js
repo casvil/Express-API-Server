@@ -3,6 +3,26 @@ const User = require('../models/user');
 const config = require('../config.js');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
+const LocalStrategy = require('passport-local');
+
+// Set options for Local Storage Strategy
+const localOptions = { usernameField: 'email' };
+
+// Create Local Strategy
+const localLogin = new LocalStrategy(localOptions, function(
+  // Verify email and password, if OK call 'done' with email
+  // otherwise call 'done' with false
+  email,
+  password,
+  done
+) {
+  User.findOne({ email }, function(err, user) {
+    if (err) return done(err);
+    if (!user) return done(null, false);
+
+    // compare `password` with hashed user.password
+  });
+});
 
 // Set options for JWT strategy
 const jwtOptions = {
