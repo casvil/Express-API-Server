@@ -1,11 +1,11 @@
 //Main starting point of the application
-import express from 'express';
-import http from 'http';
-import bodyParser from 'body-parser';
-import morgan from 'morgan';
-import router from './router';
-import mongoose from 'mongoose';
-import cors from 'cors';
+const express = require('express');
+const http = require('http');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const router = require('./router');
+const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 const a = 2;
