@@ -11,7 +11,7 @@ const app = express();
 const a = 2;
 
 // DB Setup
-mongoose.connect('mongodb://localhost:27017/auth');
+mongoose.connect('mongodb://localhost:27017/mama-recipes');
 
 // App Setup
 app.use(cors());
