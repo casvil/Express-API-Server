@@ -1,4 +1,6 @@
 //Main starting point of the application
+require('dotenv').config();
+
 const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
@@ -8,10 +10,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
-const a = 2;
 
 // DB Setup
-mongoose.connect('mongodb://localhost:27017/mama-recipes');
+mongoose.connect(process.env.MONGOBD_URI);
 
 // App Setup
 app.use(cors());
