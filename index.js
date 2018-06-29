@@ -15,7 +15,13 @@ const app = express();
 mongoose.connect(process.env.MONGOBD_URI);
 
 // App Setup
-app.use(cors());
+app.use(
+  cors({
+    origin: ['http://localhost:3000', 'https://mama-recipes.herokuapp.com'],
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'authorization']
+  })
+);
 app.use(morgan('combined')); // login framework middleware
 app.use(bodyParser.json({ type: '*/*' })); // parse requests into json middleware
 router(app);
