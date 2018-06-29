@@ -12,7 +12,7 @@ const cors = require('cors');
 const app = express();
 
 // DB Setup
-mongoose.connect(process.env.MONGOBD_URI);
+mongoose.connect(process.env.MONGODB_URI);
 
 // App Setup
 app.use(
