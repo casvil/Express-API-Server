@@ -1,6 +1,5 @@
 const jwt = require('jwt-simple');
 const Recipe = require('../models/recipe');
-const config = require('../config');
 
 exports.addEntry = function(req, res, next) {
   if (!Object.keys(req.body)) {
